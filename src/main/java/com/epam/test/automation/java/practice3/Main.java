@@ -49,7 +49,7 @@ public class Main {
             }
             return integerList.calculate();
         }
-        return 1;
+        return 0;
     }
 
     public static int[][] task3(int[][] matrix) {

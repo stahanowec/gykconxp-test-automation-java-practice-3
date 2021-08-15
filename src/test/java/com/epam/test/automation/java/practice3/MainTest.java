@@ -3,11 +3,10 @@ package com.epam.test.automation.java.practice3;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
 
 public class MainTest {
 
@@ -20,6 +19,12 @@ public class MainTest {
         var result = Main.task1(current);
         //then
         assertEquals(result, expected);
+    }
+
+    @Test
+    public void ifTask1WithEmptyArrayThenTrowIllegal() {
+        var current = new int[]{};
+        assertThrows(IllegalArgumentException.class, () -> Main.task1(current));
     }
 
     @Test(dataProvider = "task2DataProvider")
@@ -36,8 +41,8 @@ public class MainTest {
     @Test
     public void ifTask3ThenSuccess() {
         //given
-        var current = new int[][] {{2, 4, 3, 3},{5, 7, 8, 5},{2, 4, 3, 3},{5, 7, 8, 5}};
-        var expected = new int[][] {{2, 1, 1, 1},{0, 7, 1, 1},{0, 0, 3, 1},{0, 0, 0, 5}};
+        var current = new int[][]{{2, 4, 3, 3}, {5, 7, 8, 5}, {2, 4, 3, 3}, {5, 7, 8, 5}};
+        var expected = new int[][]{{2, 1, 1, 1}, {0, 7, 1, 1}, {0, 0, 3, 1}, {0, 0, 0, 5}};
         //when
         var result = Main.task3(current);
         //then
@@ -61,6 +66,6 @@ public class MainTest {
                 {List.of(5, 50, 50, 4, 5), 1},
                 {List.of(5, 350, 350, 4, 350), 3},
                 {List.of(10, 10, 10, 10, 10), 4}
-              };
+        };
     }
 }
