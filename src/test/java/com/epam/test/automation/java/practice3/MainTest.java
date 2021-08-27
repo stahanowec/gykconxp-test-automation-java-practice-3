@@ -2,11 +2,9 @@ package com.epam.test.automation.java.practice3;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.util.List;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertThrows;
+
 
 public class MainTest {
 
@@ -21,21 +19,14 @@ public class MainTest {
         assertEquals(result, expected);
     }
 
-    @Test
-    public void ifTask1WithEmptyArrayThenTrowIllegal() {
-        var current = new int[]{};
-        assertThrows(IllegalArgumentException.class, () -> Main.task1(current));
-    }
-
     @Test(dataProvider = "task2DataProvider")
     public void ifTask2ThenSuccess(List<Integer> currentValue, int expectedValue) {
         //given
         var current = currentValue.stream().mapToInt(i -> i).toArray();
-        var expected = expectedValue;
         //when
         var result = Main.task2(current);
         //then
-        assertEquals(result, expected);
+        assertEquals(result, expectedValue);
     }
 
     @Test

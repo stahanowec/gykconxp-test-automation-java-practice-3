@@ -5,22 +5,21 @@ import java.util.Map;
 
 public class Main {
 
-    private Main() {
-    }
+    private Main() {}
 
     public static int[] task1(int[] array) {
-        if (array.length > 2) {
-            for (var i = 0; i < array.length / 2; i++) {
-                var num = array[i];
-                var lastNum = array[array.length - i - 1];
-                if (isPrime(num, lastNum)) {
-                    array[i] = lastNum;
-                    array[array.length - i - 1] = num;
-                }
-            }
-            return array;
+        if (array == null) {
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        for (var i = 0; i < array.length / 2; i++) {
+            var num = array[i];
+            var lastNum = array[array.length - i - 1];
+            if (isPrime(num, lastNum)) {
+                array[i] = lastNum;
+                array[array.length - i - 1] = num;
+            }
+        }
+        return array;
     }
 
     private static boolean isPrime(int secondNum, int thirdNum) {
