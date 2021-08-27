@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class Main {
 
-    private Main() {}
+    private Main() {
+    }
 
     public static int[] task1(int[] array) {
         if (array == null) {
